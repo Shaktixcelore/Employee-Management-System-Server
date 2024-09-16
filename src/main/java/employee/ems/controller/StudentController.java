@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import employee.ems.model.Student;
 import employee.ems.service.IStudentService;
 
-@CrossOrigin("http://localhost:3000") //allowing client application to consume the backed
+@CrossOrigin("http://localhost:3000") //allowing client application to consume the backend
 @RestController
 @RequestMapping("/students")
 
