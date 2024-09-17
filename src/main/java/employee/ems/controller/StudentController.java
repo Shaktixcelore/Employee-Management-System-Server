@@ -1,6 +1,7 @@
 package employee.ems.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import employee.ems.model.Student;
 import employee.ems.service.IStudentService;
 
-@CrossOrigin("http://localhost:3000") //allowing client application to consume the backend
+@CrossOrigin("https://employee-management-system-client-lac.vercel.app/") //allowing client application to consume the backend
 @RestController
 @RequestMapping("/students")
 
@@ -47,6 +48,18 @@ public class StudentController {
     @GetMapping("/student/{id}")
     public Student getStudentById(@PathVariable Long id){
         return studentService.getStudentById(id);
+    }
+
+    @GetMapping("/total")
+    public ResponseEntity<Long> getTotalEmployees() {
+        long total = studentService.getTotalEmployees();
+        return new ResponseEntity<>(total, HttpStatus.OK);
+    }
+
+    @GetMapping("/departments")
+    public ResponseEntity<Map<String, Long>> getEmployeesByDepartment() {
+        Map<String, Long> departmentCounts = studentService.getEmployeesByDepartment();
+        return new ResponseEntity<>(departmentCounts, HttpStatus.OK);
     }
 
 

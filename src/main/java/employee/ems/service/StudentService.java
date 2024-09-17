@@ -1,6 +1,8 @@
 package employee.ems.service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -56,6 +58,18 @@ public class StudentService implements IStudentService{
     }
     private boolean studentAlreadyExists(String email) {
         return studentRepository.findByEmail(email).isPresent();
+    }
+
+    @Override
+    public long getTotalEmployees() {
+        return studentRepository.countTotalEmployees();
+    }
+    
+    @Override
+    public Map<String, Long> getEmployeesByDepartment() {
+        List<Object[]> results = studentRepository.countEmployeesByDepartment();
+        return results.stream()
+                      .collect(Collectors.toMap(result -> (String) result[0], result -> (Long) result[1]));
     }
 
 }
