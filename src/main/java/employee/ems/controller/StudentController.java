@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import employee.ems.model.Student;
 import employee.ems.service.IStudentService;
 
-@CrossOrigin("https://employee-management-system-client-lac.vercel.app/") //allowing client application to consume the backend
+@CrossOrigin("https://employee-management-system-client-lac.vercel.app/") //connect frontend
 @RestController
 @RequestMapping("/students")
 
